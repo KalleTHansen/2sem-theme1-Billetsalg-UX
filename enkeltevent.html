@@ -9,32 +9,66 @@
       <section>
         <h2>Billetter</h2>
 
+        <table>
+          <tr>
+            <td>Voksenbillet</td>
+            <td>kr. 250,-</td>
+            <td><button onclick="amountDec1()">-</button></td>
+            <td><p id="amount1">0</p></td>
+            <td><button onclick="amountInc1()">+</button></td>
+          </tr>
+          <tr>
+            <td>Børnebillet</td>
+            <td>kr. 150,-</td>
+            <td><button onclick="amountDec2()">-</button></td>
+            <td><p id="amount2">0</p></td>
+            <td><button onclick="amountInc2()">+</button></td>
+          </tr>
+          <tr>
+            <td>I alt:</td>
+            <td> <p id="total-price">0</p></td>
+          </tr>
+        </table>
 
-        <button id="plus1" onclick="amountDec()">-</button>
-        <p id="amount1">0</p>
-        <button id="minus1" onclick="amountInc()">+</button>
       </section>
     </main>
 
     <script type="text/javascript">
-      var amnt = "0";
+      var amnt1 = "0";
       var amnt2 = "0";
       var amnt3 = "0";
+      var total = "0";
 
-      function amountDec(){
-        if (amnt>0) {//Så antallet ikke går i minus
-          amnt--; //Fratræk 1, samme som amnt = amnt - 1
-          document.getElementById("amount1").innerHTML = amnt; //Viser antallet i p
+      function amountDec1(){
+        if (amnt1>0) {//Så antallet ikke går i minus
+          amnt1--; //Fratræk 1, samme som amnt = amnt - 1
+          document.getElementById("amount1").innerHTML = amnt1; //Viser antallet i p
+        }
+      }
+      function amountInc1(){
+        if (amnt1<50) {//Kan maks købe 50 stk
+          amnt1++; //Tillæg 1, samme som amnt = amnt + 1
+          document.getElementById("amount1").innerHTML = amnt1; //Viser antallet i p
         }
       }
 
-      function amountInc(){
-        if (amnt<50) {//Kan maks købe 50 stk
-          amnt++; //Tillæg 1, samme som amnt = amnt + 1
-          document.getElementById("amount1").innerHTML = amnt; //Viser antallet i p
+      function amountDec2(){
+        if (amnt2>0) {//Så antallet ikke går i minus
+          amnt2--; //Fratræk 1, samme som amnt = amnt - 1
+          document.getElementById("amount2").innerHTML = amnt2; //Viser antallet i p
         }
       }
-
+      function amountInc2(){
+        if (amnt2<50) {//Kan maks købe 50 stk
+          amnt2++; //Tillæg 1, samme som amnt = amnt + 1
+          document.getElementById("amount2").innerHTML = amnt2; //Viser antallet i p
+        }
+      }
+      function totalPrize() {
+        total = +amnt1 + +amnt2 + +amnt3;//PLusser laver om til integer?
+        document.getElementById("total-price").innerHTML = total; //Viser antallet i p
+      }
+      totalPrize();
     </script>
   </body>
 </html>

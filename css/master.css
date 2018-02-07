@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+h2, p {
+  color: red;
+}
+.box {
+  width: 500px;
+}
+
+.floatleft {
+  float: left;
+}
+
+.floatright {
+  float:right;
+}
