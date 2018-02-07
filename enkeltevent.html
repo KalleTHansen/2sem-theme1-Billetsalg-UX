@@ -12,21 +12,25 @@
         <table>
           <tr>
             <td>Voksenbillet</td>
-            <td>kr. 250,-</td>
+            <td>kr. 200,-</td>
             <td><button onclick="amountDec1()">-</button></td>
             <td><p id="amount1">0</p></td>
             <td><button onclick="amountInc1()">+</button></td>
           </tr>
           <tr>
             <td>Børnebillet</td>
-            <td>kr. 150,-</td>
+            <td>kr. 100,-</td>
             <td><button onclick="amountDec2()">-</button></td>
             <td><p id="amount2">0</p></td>
             <td><button onclick="amountInc2()">+</button></td>
           </tr>
           <tr>
+            <td>Billetgebyr:</td>
+            <td id="fee">kr. 0,-</td>
+          </tr>
+          <tr>
             <td>I alt:</td>
-            <td> <p id="total-price">0</p></td>
+            <td id="total-price">kr. 0,-</td>
           </tr>
         </table>
 
@@ -34,21 +38,27 @@
     </main>
 
     <script type="text/javascript">
-      var amnt1 = "0";
-      var amnt2 = "0";
-      var amnt3 = "0";
-      var total = "0";
+      var price1= 200;//Pris på Voksenbillet
+      var price2= 100;//Pris på Børnebillet
+      var amnt1 = 0;//Antal af Billettype 1 (voksne)
+      var amnt2 = 0;//Antal af Billettype 2 (børn)
+      var fee   = 15;//Gebyr, der tillægges hver billet uanset type
+      var nmbr  = 0;//Antal billetter
+      var feeTotal = 0;
+      var total = 0;//Samlede pris
 
-      function amountDec1(){
+      function amountDec1(){//Træk 1 fra antallet af billetter
         if (amnt1>0) {//Så antallet ikke går i minus
           amnt1--; //Fratræk 1, samme som amnt = amnt - 1
           document.getElementById("amount1").innerHTML = amnt1; //Viser antallet i p
+          totalPrize();//Beregn totalprisen
         }
       }
-      function amountInc1(){
+      function amountInc1(){//Læg 1 til antallet af billetter
         if (amnt1<50) {//Kan maks købe 50 stk
           amnt1++; //Tillæg 1, samme som amnt = amnt + 1
           document.getElementById("amount1").innerHTML = amnt1; //Viser antallet i p
+          totalPrize();
         }
       }
 
@@ -56,19 +66,28 @@
         if (amnt2>0) {//Så antallet ikke går i minus
           amnt2--; //Fratræk 1, samme som amnt = amnt - 1
           document.getElementById("amount2").innerHTML = amnt2; //Viser antallet i p
+          totalPrize();
         }
       }
       function amountInc2(){
         if (amnt2<50) {//Kan maks købe 50 stk
           amnt2++; //Tillæg 1, samme som amnt = amnt + 1
           document.getElementById("amount2").innerHTML = amnt2; //Viser antallet i p
+          totalPrize();
         }
       }
-      function totalPrize() {
-        total = +amnt1 + +amnt2 + +amnt3;//PLusser laver om til integer?
-        document.getElementById("total-price").innerHTML = total; //Viser antallet i p
+      function totalPrize() {//Beregn totalprisen og skriv det samlede billetgebyr
+        nmbr = Number(amnt1) + Number(amnt2) + Number(amnt3);
+        feeTotal = Number(nmbr)*Number(fee);
+        document.getElementById("fee").innerHTML = "kr. "+feeTotal+",-"; //Samlede gebyrbeløb
+
+        total = (Number(amnt1)*price1) + (Number(amnt2)*price2) + feeTotal;//Number laver om til integer
+        document.getElementById("total-price").innerHTML = "kr. "+total+",-"; //Samlede beløb
+
+
       }
-      totalPrize();
+
+
     </script>
   </body>
 </html>
