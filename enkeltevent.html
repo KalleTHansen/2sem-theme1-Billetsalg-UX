@@ -77,7 +77,7 @@
         }
       }
       function totalPrize() {//Beregn totalprisen og skriv det samlede billetgebyr
-        nmbr = Number(amnt1) + Number(amnt2) + Number(amnt3);
+        nmbr = Number(amnt1) + Number(amnt2) + Number(fee);
         feeTotal = Number(nmbr)*Number(fee);
         document.getElementById("fee").innerHTML = "kr. "+feeTotal+",-"; //Samlede gebyrbeløb
 
