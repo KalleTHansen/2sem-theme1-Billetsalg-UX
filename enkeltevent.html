@@ -2,14 +2,33 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow"><!--Så søgemaskiner ikke indekserer denne side eller andre på domænet?-->
     <title>Køb billetter | Billetsalg</title>
   </head>
   <body>
+    <p id="basket">Kurv(0)</p>
     <main>
+      <section> <!--Billede og tid/sted-->
+        <img src="img/carpark.jpg" alt="Carpark North">
+        <h1>Carpark North koncert</h1>
+        <h3>Dato</h3>
+        <p>23. november 2018</p>
+        <h3>Tidspunkt</h3>
+        <p>Kl. 20:00</p>
+        <h3>Adresse</h3>
+        <p>Odinsvej 12, 4100 Ringsted</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2726.3359195900794!2d11.796377000000001!3d55.434845!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9e7261462cdf9cff!2sPlastfabrikken+ApS!5e1!3m2!1sda!2sdk!4v1518036668936" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+      </section>
+
       <section>
         <h2>Billetter</h2>
 
         <table>
+          <tr>
+            <th>Billettype</th>
+            <th>Pris</th>
+            <th>Antal</th>
+          </tr>
           <tr>
             <td>Voksenbillet</td>
             <td>kr. 200,-</td>
@@ -31,13 +50,27 @@
           <tr>
             <td>I alt:</td>
             <td id="total-price">kr. 0,-</td>
+            <td> <button onclick="toggleDisplay()">Læg i kurv</button></td><!--Åben boks med fortsæt køb eller betal-->
           </tr>
         </table>
 
+        <section id="shop-or-pay">
+          <h2>Vil du fortsætte med at handle eller gå til betaling?</h2>
+          <button onclick="toggleDisplay()">Shop videre</button>
+          <a href="#"><button>Til betaling</button></a>
+        </section>
+
+        <section>
+          <h2>Om arrangementet</h2>
+          <p>Glæd dig til en fantastisk koncert med Carpark North på spillestedet Plastfabrikken i Ringsted.</p>
+          <p>Tilbage i 2001 singledebuterede Carpark North med "There’s a Place", og siden har landets rockfans fået den ene hitsingle efter den anden fra den hårdtslående trio. Sange som ’Human’, ’Transparent & Glasslike’ og ’32’ har alle været med til at forme det Carpark North, som vi alle kender i dag.</p>
+          <p>I sommeren 2017 var Carpark North, ovenpå to års pause, atter at finde på landets største festivalscener. Carpark North fik blandt andet rundet Ringsted Festival 2017 af med manér på Anlægsscenen!</p>
+        </section>
       </section>
     </main>
 
     <script type="text/javascript">
+      //Billetvalg vars
       var maxtickets = 50;//Kan maks købe 50 stk af hver slags billet
       var price1= 200;//Pris på Voksenbillet
       var price2= 100;//Pris på Børnebillet
@@ -52,14 +85,14 @@
         if (amnt1>0) {//Så antallet ikke går i minus
           amnt1--; //Fratræk 1, samme som amnt = amnt - 1
           document.getElementById("amount1").innerHTML = amnt1; //Viser antallet i p
-          totalPrize();//Beregn billetgebyr og totalprisen
+          totalPrice();//Beregn billetgebyr og totalprisen
         }
       }
       function amountInc1(){//Læg 1 til antallet af billetter
         if (amnt1<maxtickets) {//Kan maks købe et hvis antal af hver billettype
           amnt1++; //Tillæg 1, samme som amnt = amnt + 1
           document.getElementById("amount1").innerHTML = amnt1; //Viser antallet i p
-          totalPrize();//Beregn billetgebyr og totalprisen
+          totalPrice();//Beregn billetgebyr og totalprisen
         }
       }
 
@@ -67,17 +100,17 @@
         if (amnt2>0) {//Så antallet ikke går i minus
           amnt2--; //Fratræk 1, samme som amnt = amnt - 1
           document.getElementById("amount2").innerHTML = amnt2; //Viser antallet i p
-          totalPrize();//Beregn billetgebyr og totalprisen
+          totalPrice();//Beregn billetgebyr og totalprisen
         }
       }
       function amountInc2(){
         if (amnt2<maxtickets) {//Kan maks købe et hvis antal af hver billettype
           amnt2++; //Tillæg 1, samme som amnt = amnt + 1
           document.getElementById("amount2").innerHTML = amnt2; //Viser antallet i p
-          totalPrize();//Beregn billetgebyr og totalprisen
+          totalPrice();//Beregn billetgebyr og totalprisen
         }
       }
-      function totalPrize() {//Beregn det samlede billetgebyr og totalprisen
+      function totalPrice() {//Beregn det samlede billetgebyr og totalprisen
         nmbr = Number(amnt1) + Number(amnt2);//Antallet af billetter
         feeTotal = Number(nmbr)*Number(fee);//Den samlede billetgebyr= antal billetter*gebyr per billet
         document.getElementById("fee").innerHTML = "kr. "+feeTotal+",-"; //Samlede gebyrbeløb
@@ -87,6 +120,25 @@
       }
 
 
+
+
+      function toggleDisplay() {//Viser og fjerner box med valget om man vil shoppe videre eller betale
+        var x = document.getElementById("shop-or-pay");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+
+        document.getElementById("basket").innerHTML = "Kurv("+nmbr+")";
+      }
+
+      toggleDisplay()
+      /*function change(amount, type) {
+      if (type = 1) amnt1 += amount;
+      else amnt2 += amount;
+      }
+      */
     </script>
   </body>
 </html>
