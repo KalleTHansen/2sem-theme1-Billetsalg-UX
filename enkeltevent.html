@@ -38,27 +38,28 @@
     </main>
 
     <script type="text/javascript">
+      var maxtickets = 50;//Kan maks købe 50 stk af hver slags billet
       var price1= 200;//Pris på Voksenbillet
       var price2= 100;//Pris på Børnebillet
       var amnt1 = 0;//Antal af Billettype 1 (voksne)
       var amnt2 = 0;//Antal af Billettype 2 (børn)
       var fee   = 15;//Gebyr, der tillægges hver billet uanset type
       var nmbr  = 0;//Antal billetter
-      var feeTotal = 0;
+      var feeTotal = 0;//Beløbet på billetgebyrerne
       var total = 0;//Samlede pris
 
       function amountDec1(){//Træk 1 fra antallet af billetter
         if (amnt1>0) {//Så antallet ikke går i minus
           amnt1--; //Fratræk 1, samme som amnt = amnt - 1
           document.getElementById("amount1").innerHTML = amnt1; //Viser antallet i p
-          totalPrize();//Beregn totalprisen
+          totalPrize();//Beregn billetgebyr og totalprisen
         }
       }
       function amountInc1(){//Læg 1 til antallet af billetter
-        if (amnt1<50) {//Kan maks købe 50 stk
+        if (amnt1<maxtickets) {//Kan maks købe et hvis antal af hver billettype
           amnt1++; //Tillæg 1, samme som amnt = amnt + 1
           document.getElementById("amount1").innerHTML = amnt1; //Viser antallet i p
-          totalPrize();
+          totalPrize();//Beregn billetgebyr og totalprisen
         }
       }
 
@@ -66,25 +67,23 @@
         if (amnt2>0) {//Så antallet ikke går i minus
           amnt2--; //Fratræk 1, samme som amnt = amnt - 1
           document.getElementById("amount2").innerHTML = amnt2; //Viser antallet i p
-          totalPrize();
+          totalPrize();//Beregn billetgebyr og totalprisen
         }
       }
       function amountInc2(){
-        if (amnt2<50) {//Kan maks købe 50 stk
+        if (amnt2<maxtickets) {//Kan maks købe et hvis antal af hver billettype
           amnt2++; //Tillæg 1, samme som amnt = amnt + 1
           document.getElementById("amount2").innerHTML = amnt2; //Viser antallet i p
-          totalPrize();
+          totalPrize();//Beregn billetgebyr og totalprisen
         }
       }
-      function totalPrize() {//Beregn totalprisen og skriv det samlede billetgebyr
-        nmbr = Number(amnt1) + Number(amnt2);
-        feeTotal = Number(nmbr)*Number(fee);
+      function totalPrize() {//Beregn det samlede billetgebyr og totalprisen
+        nmbr = Number(amnt1) + Number(amnt2);//Antallet af billetter
+        feeTotal = Number(nmbr)*Number(fee);//Den samlede billetgebyr= antal billetter*gebyr per billet
         document.getElementById("fee").innerHTML = "kr. "+feeTotal+",-"; //Samlede gebyrbeløb
 
         total = (Number(amnt1)*price1) + (Number(amnt2)*price2) + feeTotal;//Number laver om til integer
         document.getElementById("total-price").innerHTML = "kr. "+total+",-"; //Samlede beløb
-
-
       }
 
 
