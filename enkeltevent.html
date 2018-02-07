@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Køb billetter | Billetsalg</title>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Billetter</h2>
+
+
+        <button id="plus1" onclick="amountDec()">-</button>
+        <p id="amount1">0</p>
+        <button id="minus1" onclick="amountInc()">+</button>
+      </section>
+    </main>
+
+    <script type="text/javascript">
+      var amnt = "0";
+      var amnt2 = "0";
+      var amnt3 = "0";
+
+      function amountDec(){
+        if (amnt>0) {//Så antallet ikke går i minus
+          amnt--; //Fratræk 1, samme som amnt = amnt - 1
+          document.getElementById("amount1").innerHTML = amnt; //Viser antallet i p
+        }
+      }
+
+      function amountInc(){
+        if (amnt<50) {//Kan maks købe 50 stk
+          amnt++; //Tillæg 1, samme som amnt = amnt + 1
+          document.getElementById("amount1").innerHTML = amnt; //Viser antallet i p
+        }
+      }
+
+    </script>
+  </body>
+</html>
