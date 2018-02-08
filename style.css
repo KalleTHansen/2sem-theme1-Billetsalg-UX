@@ -446,4 +446,8 @@ th {
     font-size: 1.4em;
 }
 
+.activePage {
+  color: black;
+  text-decoration: underline;
+}
 /* Icons made by Freepik on Flaticon.com */
