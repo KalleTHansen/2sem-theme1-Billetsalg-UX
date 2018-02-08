@@ -2,23 +2,34 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="css/master.css">
     <meta name="robots" content="noindex, nofollow"><!--Så søgemaskiner ikke indekserer denne side eller andre på domænet?-->
     <title>Køb billetter | Billetsalg</title>
   </head>
+  <div class="wrapper">
   <body>
     <p id="basket">Kurv(0)</p>
     <main>
-      <section> <!--Billede og tid/sted-->
-        <img src="img/carpark.jpg" alt="Carpark North">
-        <h1>Carpark North koncert</h1>
-        <h3>Dato</h3>
-        <p>23. november 2018</p>
-        <h3>Tidspunkt</h3>
-        <p>Kl. 20:00</p>
-        <h3>Adresse</h3>
-        <p>Odinsvej 12, 4100 Ringsted</p>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2726.3359195900794!2d11.796377000000001!3d55.434845!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9e7261462cdf9cff!2sPlastfabrikken+ApS!5e1!3m2!1sda!2sdk!4v1518036668936" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+      <section>
+        <img id="coverpic" src="img/carpark.jpg" alt="Carpark North">
+        <aside> <!--Basal info som tid/sted-->
+          <article class="facts">
+          <h1>Carpark North koncert</h1>
+            <h3>Dato</h3>
+              <p>23. november 2018</p>
+            <h3>Tidspunkt</h3>
+              <p>Kl. 20:00</p>
+            <h3>Adresse</h3>
+              <p>Odinsvej 12, 4100 Ringsted</p>
+          </article>
+
+          <div class="google-maps">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2726.3359195900794!2d11.796377000000001!3d55.434845!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9e7261462cdf9cff!2sPlastfabrikken+ApS!5e1!3m2!1sda!2sdk!4v1518036668936" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+          </div>
+        </aside>
       </section>
+
+      <div style="clear: both;"></div>
 
       <section>
         <h2>Billetter</h2>
@@ -50,7 +61,9 @@
           <tr>
             <td>I alt:</td>
             <td id="total-price">kr. 0,-</td>
-            <td> <button onclick="toggleDisplay()">Læg i kurv</button></td><!--Åben boks med fortsæt køb eller betal-->
+          </tr>
+          <tr>
+            <td colspan="2" ><button onclick="toggleDisplay()">Læg i kurv</button></td><!--Åben boks med fortsæt køb eller betal-->
           </tr>
         </table>
 
@@ -68,77 +81,72 @@
         </section>
       </section>
     </main>
-
-    <script type="text/javascript">
-      //Billetvalg vars
-      var maxtickets = 50;//Kan maks købe 50 stk af hver slags billet
-      var price1= 200;//Pris på Voksenbillet
-      var price2= 100;//Pris på Børnebillet
-      var amnt1 = 0;//Antal af Billettype 1 (voksne)
-      var amnt2 = 0;//Antal af Billettype 2 (børn)
-      var fee   = 15;//Gebyr, der tillægges hver billet uanset type
-      var nmbr  = 0;//Antal billetter
-      var feeTotal = 0;//Beløbet på billetgebyrerne
-      var total = 0;//Samlede pris
-
-      function amountDec1(){//Træk 1 fra antallet af billetter
-        if (amnt1>0) {//Så antallet ikke går i minus
-          amnt1--; //Fratræk 1, samme som amnt = amnt - 1
-          document.getElementById("amount1").innerHTML = amnt1; //Viser antallet i p
-          totalPrice();//Beregn billetgebyr og totalprisen
-        }
-      }
-      function amountInc1(){//Læg 1 til antallet af billetter
-        if (amnt1<maxtickets) {//Kan maks købe et hvis antal af hver billettype
-          amnt1++; //Tillæg 1, samme som amnt = amnt + 1
-          document.getElementById("amount1").innerHTML = amnt1; //Viser antallet i p
-          totalPrice();//Beregn billetgebyr og totalprisen
-        }
-      }
-
-      function amountDec2(){
-        if (amnt2>0) {//Så antallet ikke går i minus
-          amnt2--; //Fratræk 1, samme som amnt = amnt - 1
-          document.getElementById("amount2").innerHTML = amnt2; //Viser antallet i p
-          totalPrice();//Beregn billetgebyr og totalprisen
-        }
-      }
-      function amountInc2(){
-        if (amnt2<maxtickets) {//Kan maks købe et hvis antal af hver billettype
-          amnt2++; //Tillæg 1, samme som amnt = amnt + 1
-          document.getElementById("amount2").innerHTML = amnt2; //Viser antallet i p
-          totalPrice();//Beregn billetgebyr og totalprisen
-        }
-      }
-      function totalPrice() {//Beregn det samlede billetgebyr og totalprisen
-        nmbr = Number(amnt1) + Number(amnt2);//Antallet af billetter
-        feeTotal = Number(nmbr)*Number(fee);//Den samlede billetgebyr= antal billetter*gebyr per billet
-        document.getElementById("fee").innerHTML = "kr. "+feeTotal+",-"; //Samlede gebyrbeløb
-
-        total = (Number(amnt1)*price1) + (Number(amnt2)*price2) + feeTotal;//Number laver om til integer
-        document.getElementById("total-price").innerHTML = "kr. "+total+",-"; //Samlede beløb
-      }
-
-
-
-
-      function toggleDisplay() {//Viser og fjerner box med valget om man vil shoppe videre eller betale
-        var x = document.getElementById("shop-or-pay");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-
-        document.getElementById("basket").innerHTML = "Kurv("+nmbr+")";
-      }
-
-      toggleDisplay()
-      /*function change(amount, type) {
-      if (type = 1) amnt1 += amount;
-      else amnt2 += amount;
-      }
-      */
-    </script>
   </body>
+  </div>
+  <script type="text/javascript">
+    //Billetvalg vars
+    var maxtickets = 50;//Kan maks købe 50 stk af hver slags billet
+    var price1= 200;//Pris på Voksenbillet
+    var price2= 100;//Pris på Børnebillet
+    var amnt1 = 0;//Antal af Billettype 1 (voksne)
+    var amnt2 = 0;//Antal af Billettype 2 (børn)
+    var fee   = 15;//Gebyr, der tillægges hver billet uanset type
+    var nmbr  = 0;//Antal billetter
+    var feeTotal = 0;//Beløbet på billetgebyrerne
+    var total = 0;//Samlede pris
+
+    function amountDec1(){//Træk 1 fra antallet af billetter
+      if (amnt1>0) {//Så antallet ikke går i minus
+        amnt1--; //Fratræk 1, samme som amnt = amnt - 1
+        document.getElementById("amount1").innerHTML = amnt1; //Viser antallet i p
+        totalPrice();//Beregn billetgebyr og totalprisen
+      }
+    }
+    function amountInc1(){//Læg 1 til antallet af billetter
+      if (amnt1<maxtickets) {//Kan maks købe et hvis antal af hver billettype
+        amnt1++; //Tillæg 1, samme som amnt = amnt + 1
+        document.getElementById("amount1").innerHTML = amnt1; //Viser antallet i p
+        totalPrice();//Beregn billetgebyr og totalprisen
+      }
+    }
+
+    function amountDec2(){
+      if (amnt2>0) {//Så antallet ikke går i minus
+        amnt2--; //Fratræk 1, samme som amnt = amnt - 1
+        document.getElementById("amount2").innerHTML = amnt2; //Viser antallet i p
+        totalPrice();//Beregn billetgebyr og totalprisen
+      }
+    }
+    function amountInc2(){
+      if (amnt2<maxtickets) {//Kan maks købe et hvis antal af hver billettype
+        amnt2++; //Tillæg 1, samme som amnt = amnt + 1
+        document.getElementById("amount2").innerHTML = amnt2; //Viser antallet i p
+        totalPrice();//Beregn billetgebyr og totalprisen
+      }
+    }
+    function totalPrice() {//Beregn det samlede billetgebyr og totalprisen
+      nmbr = Number(amnt1) + Number(amnt2);//Antallet af billetter
+      feeTotal = Number(nmbr)*Number(fee);//Den samlede billetgebyr= antal billetter*gebyr per billet
+      document.getElementById("fee").innerHTML = "kr. "+feeTotal+",-"; //Samlede gebyrbeløb
+
+      total = (Number(amnt1)*price1) + (Number(amnt2)*price2) + feeTotal;//Number laver om til integer
+      document.getElementById("total-price").innerHTML = "kr. "+total+",-"; //Samlede beløb
+    }
+
+
+
+
+    function toggleDisplay() {//Viser og fjerner box med valget om man vil shoppe videre eller betale
+      var x = document.getElementById("shop-or-pay");
+      if (x.style.display === "none") {
+          x.style.display = "block";
+      } else {
+          x.style.display = "none";
+      }
+
+      document.getElementById("basket").innerHTML = "Kurv("+nmbr+")";
+    }
+
+    toggleDisplay()
+  </script>
 </html>
