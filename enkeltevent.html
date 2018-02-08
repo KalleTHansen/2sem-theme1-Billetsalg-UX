@@ -7,9 +7,74 @@
     <meta name="robots" content="noindex, nofollow"><!--Så søgemaskiner ikke indekserer denne side eller andre på domænet?-->
     <title>Køb billetter | Billetsalg</title>
   </head>
+
+  <header>
+
+<!--navigationsbar-->
+<nav>
+    <img id="logo" src="img/logo.png" alt="Logo">
+
+    <!--mobil kurv-->
+  <div class="kurvogtekst">
+    <img src="img/kurv.png"alt="kurvlogo"> <!--Icons made by Dave Gandy on flaticon.com-->
+    <p id="antal" id="basket">Kurv(0)</p>
+  </div>
+
+<!--menupunkter-->
+<div class="desktoptop">
+
+<ul class="topbar">
+<li class="topli"><a href="index.html" class="current">FORSIDE</a></li>
+<li class="topli"><a href="index.html" class="current">KONTAKT</a></li>
+<li class="topli"><a href="index.html" class="current">LOGIN</a></li>
+</ul>
+
+<!--DESKTOP KURV-->
+<div class="desktopkurvogtekst">
+<img src="img/kurv.png"alt="kurvlogo"> <!--Icons made by Dave Gandy on flaticon.com-->
+<p id="antaldesktop">Kurv (0)</p>
+</div>
+</div>
+
+</nav>
+
+<!--søgefelt--->
+<div class="search">
+<input type="text" placeholder="Søg på by, dato, event, kategori ..."><!-- denne forslår hvad du skal udfylde i feltet-->
+<img src="img/search.png" alt="søgeknap"> <!--Icons made by Smashicons on flaticon.com-->
+</div>
+
+<!--menu med kategorier-->
+<div class="dropdown">
+<button class="dropbtn">Vælg kategori ...</button>
+<div class="dropdown-content">
+  <a href="#" id="activePage">MUSIK</a>
+  <a href="#">FESTIVAL</a>
+  <a href="sport.html">SPORT</a>
+  <a href="#">DYR</a>
+  <a href="#">MUSEER</a>
+  <a href="#">OPLEVELSER</a>
+  <a href="#">GAVEKORT</a>
+</div>
+</div>
+
+<!--menu med kategorier til desktop-->
+<div class="desktopkategorier">
+<ul class="desktopul">
+<li><a href="#" id="activePage">MUSIK</a></li>
+<li><a href="#" class="current">FESTIVAL</a></li>
+<li><a href="sport.html" class="current">SPORT</a></li>
+<li><a href="#" class="current">DYR</a></li>
+<li><a href="#" class="current">MUSEER</a></li>
+<li><a href="#" class="current">OPLEVELSER</a></li>
+<li><a href="#" class="current">GAVEKORT</a></li>
+</ul>
+</div>
+  </header>
+
+
   <div class="wrapper">
   <body>
-    <p id="basket">Kurv(0)</p>
     <main>
 
         <img id="coverpic" src="img/carpark.jpg" alt="Carpark North">
@@ -94,6 +159,27 @@
 
     </main>
   </body>
+
+  <footer>
+    <!--kontaktinformation-->
+  <h3>Kontakt os</h3>
+  <p id="desktoptilmelddig">Tilmeld dig vores nyhedsbrev:</p>
+  <div class="kontaktinfo">
+  <p >Mail: billetsalg@youmail.com</p>
+  <p>Tlf nr: 40 60 91 12</p>
+  </div>
+
+  <!--nyhedsbrev-->
+  <div class="nyhedsbrevogface">
+  <p id="tilmelddig">Tilmeld dig vores nyhedsbrev:</p>
+  <input class="nyhedsbrev" type="text" placeholder="Indtast mail her ... ">
+  <input id="tilmeld" .class="nyhedsbrev" type="submit" value="Tilmeld">
+
+  <!--facebookicon-->
+  <img id="facebook" src="img/facebook.png" alt="facebook icon"> <!--Icons made by Freepik on flaticon.com-->
+  </div>
+
+  </footer>
   </div>
   <script type="text/javascript">
     //Billetvalg vars
