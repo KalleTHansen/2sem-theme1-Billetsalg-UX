@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: 'Open sans';
 }
 
 .wrapper {
@@ -10,17 +11,17 @@ main {
 
 }
 #coverpic {
-  width: 100%;
+  max-width: 100%;
 }
 .facts h1{
-  font-size: 2em;
+  font-size: 1.6em;
   margin: 0 0 0.5em;
 }
 
-.google-maps {
+/*.google-maps {
     position: relative;
     padding-bottom: 90%; /*(450 ÷ 500 = 0.9 = 90%)*/
-    height: 0;
+  /*  height: 0;
     overflow: hidden;
 }
 .google-maps iframe {
@@ -30,20 +31,25 @@ main {
     width: 100%;
     height: 100%;
     display: none;
+}*/
+.google-maps iframe {
+  display: none;
 }
 
 
-@media screen and (min-width: 650px){
 
+@media screen and (min-width: 750px){
+  .facts {
+    float: left;
+  }
   .google-maps iframe {
     display: block;
+    float: right;
+
   }
 }
 
 @media screen and (min-width: 900px){
-  .facts {
-    width: 100%;
-  }
 }
 
 @media screen and (min-width: 1200px){
@@ -51,8 +57,23 @@ main {
     width: 72%;
     float: left;
   }
+
+  .facts {
+    clear: both;
+  }
+
   aside {
     float: right;
     max-width: 100%;
+  }
+
+  .goggle-maps {
+    overflow: visible;
+  }
+
+  .google-maps iframe {
+    display: block;
+    float: right;
+    width: 100%;
   }
 }
