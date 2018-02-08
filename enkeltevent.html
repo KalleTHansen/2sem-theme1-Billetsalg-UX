@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/master.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" rel="stylesheet">
-    <meta name="robots" content="noindex, nofollow"><!--Så søgemaskiner ikke indekserer denne side eller andre på domænet?-->
+    <meta name="robots" content="noindex"><!--Så søgemaskiner ikke indekserer denne side-->
     <title>Køb billetter | Billetsalg</title>
   </head>
 
@@ -16,8 +16,8 @@
 
     <!--mobil kurv-->
   <div class="kurvogtekst">
-    <img src="img/kurv.png"alt="kurvlogo"> <!--Icons made by Dave Gandy on flaticon.com-->
-    <p id="antal" id="basket">Kurv(0)</p>
+    <img src="img/kurv.png" alt="kurvlogo"> <!--Icons made by Dave Gandy on flaticon.com-->
+    <p class="basket">Kurv(0)</p>
   </div>
 
 <!--menupunkter-->
@@ -31,8 +31,8 @@
 
 <!--DESKTOP KURV-->
 <div class="desktopkurvogtekst">
-<img src="img/kurv.png"alt="kurvlogo"> <!--Icons made by Dave Gandy on flaticon.com-->
-<p id="antaldesktop">Kurv (0)</p>
+<img src="img/kurv.png" alt="kurvlogo"> <!--Icons made by Dave Gandy on flaticon.com-->
+<p class="basket">Kurv (0)</p>
 </div>
 </div>
 
@@ -48,7 +48,7 @@
 <div class="dropdown">
 <button class="dropbtn">Vælg kategori ...</button>
 <div class="dropdown-content">
-  <a href="#" id="activePage">MUSIK</a>
+  <a href="#" class="activePage">MUSIK</a>
   <a href="#">FESTIVAL</a>
   <a href="sport.html">SPORT</a>
   <a href="#">DYR</a>
@@ -61,7 +61,7 @@
 <!--menu med kategorier til desktop-->
 <div class="desktopkategorier">
 <ul class="desktopul">
-<li><a href="#" id="activePage">MUSIK</a></li>
+<li><a href="#" class="activePage">MUSIK</a></li>
 <li><a href="#" class="current">FESTIVAL</a></li>
 <li><a href="sport.html" class="current">SPORT</a></li>
 <li><a href="#" class="current">DYR</a></li>
@@ -158,7 +158,6 @@
       </section>
 
     </main>
-  </body>
 
   <footer>
     <!--kontaktinformation-->
@@ -180,6 +179,7 @@
   </div>
 
   </footer>
+  </body>
   </div>
   <script type="text/javascript">
     //Billetvalg vars
@@ -236,15 +236,15 @@
 
     function toggleDisplay() {//Viser og fjerner box med valget om man vil shoppe videre eller betale
       var x = document.getElementById("shop-or-pay");
-      if (x.style.display === "none") {
-          x.style.display = "block";
+      if (x.style.display === "none") {//Hvis elementet har tildelt css egenskaben display: none,
+          x.style.display = "block";//ændr da denne til block.
       } else {
-          x.style.display = "none";
+          x.style.display = "none";//Ellers skal display sættes til none
       }
 
-      document.getElementById("basket").innerHTML = "Kurv("+nmbr+")";
+      document.getElementsByClassName("basket").innerHTML = "Kurv("+nmbr+")";//Skriv antallet af billetter i teksten ved siden af kurven
     }
 
-    toggleDisplay()
+    toggleDisplay()//Kør funktionen
   </script>
 </html>
