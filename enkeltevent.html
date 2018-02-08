@@ -11,7 +11,7 @@
   <body>
     <p id="basket">Kurv(0)</p>
     <main>
-      <section>
+
         <img id="coverpic" src="img/carpark.jpg" alt="Carpark North">
         <aside> <!--Basal info som tid/sted-->
           <article class="facts">
@@ -28,14 +28,15 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2726.3359195900794!2d11.796377000000001!3d55.434845!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9e7261462cdf9cff!2sPlastfabrikken+ApS!5e1!3m2!1sda!2sdk!4v1518036668936" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
           </div>
         </aside>
-      </section>
+
 
       <div style="clear: both;"></div>
 
       <section>
+        <div class="section-center">
         <h2>Billetter</h2>
 
-        <table>
+        <table  id="lastrow">
           <tr>
             <th>Billettype</th>
             <th>Pris</th>
@@ -55,6 +56,9 @@
             <td><p id="amount2">0</p></td>
             <td><button onclick="amountInc2()">+</button></td>
           </tr>
+        </table>
+
+        <table>
           <tr>
             <td>Billetgebyr:</td>
             <td id="fee">kr. 0,-</td>
@@ -64,23 +68,30 @@
             <td id="total-price">kr. 0,-</td>
           </tr>
           <tr>
-            <td colspan="2" ><button onclick="toggleDisplay()">Læg i kurv</button></td><!--Åben boks med fortsæt køb eller betal-->
+            <td></td>
+            <td colspan="2"><button onclick="toggleDisplay()">Læg i kurv</button></td><!--Åben boks med fortsæt køb eller betal-->
           </tr>
         </table>
+        </div>
+      </section>
 
-        <section id="shop-or-pay">
+      <section id="shop-or-pay">
+        <div class="section-center">
           <h2>Vil du fortsætte med at handle eller gå til betaling?</h2>
           <button onclick="toggleDisplay()">Shop videre</button>
           <a href="#"><button>Til betaling</button></a>
-        </section>
+        </div>
+      </section>
 
-        <section>
+      <section>
+        <div class="section-center">
           <h2>Om arrangementet</h2>
           <p>Glæd dig til en fantastisk koncert med Carpark North på spillestedet Plastfabrikken i Ringsted.</p>
           <p>Tilbage i 2001 singledebuterede Carpark North med "There’s a Place", og siden har landets rockfans fået den ene hitsingle efter den anden fra den hårdtslående trio. Sange som ’Human’, ’Transparent & Glasslike’ og ’32’ har alle været med til at forme det Carpark North, som vi alle kender i dag.</p>
           <p>I sommeren 2017 var Carpark North, ovenpå to års pause, atter at finde på landets største festivalscener. Carpark North fik blandt andet rundet Ringsted Festival 2017 af med manér på Anlægsscenen!</p>
-        </section>
+        </div>
       </section>
+
     </main>
   </body>
   </div>
